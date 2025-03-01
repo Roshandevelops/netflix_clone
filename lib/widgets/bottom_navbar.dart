@@ -16,7 +16,7 @@ class BottomNavbarWidget extends StatelessWidget {
               indexChangeNotifier.value = index;
             },
             index: newIndex,
-            animationDuration: Duration(milliseconds: 400),
+            animationDuration: Duration(milliseconds: 300),
             // color: Colors.black,
             backgroundColor: Colors.black,
             items: const [
