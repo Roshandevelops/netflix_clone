@@ -1,10 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
+// ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
 
 class BottomNavbarWidget extends StatelessWidget {
-  const BottomNavbarWidget({super.key});
+  final ValueNotifier<int> indexChangeNotifier;
+  const BottomNavbarWidget({super.key, required this.indexChangeNotifier});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class BottomNavbarWidget extends StatelessWidget {
               indexChangeNotifier.value = index;
             },
             index: newIndex,
-            animationDuration: Duration(milliseconds: 300),
+            animationDuration: const Duration(milliseconds: 300),
             // color: Colors.black,
             backgroundColor: Colors.black,
             items: const [

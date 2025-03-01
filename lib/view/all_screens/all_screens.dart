@@ -9,7 +9,7 @@ import 'package:netflix_project/widgets/bottom_navbar.dart';
 class AllScreens extends StatelessWidget {
   const AllScreens({super.key});
 
-  final List screens = const [
+  final pages = const [
     HomeScreen(),
     NewHotScreen(),
     FastLaughScreen(),
@@ -19,15 +19,17 @@ class AllScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
     return Scaffold(
-      backgroundColor: Colors.yellow,
       body: ValueListenableBuilder(
         valueListenable: indexChangeNotifier,
-        builder: (context, index, child) {
-          return screens[index];
+        builder: (context, index, _) {
+          return pages[index];
         },
       ),
-      bottomNavigationBar: BottomNavbarWidget(),
+      bottomNavigationBar: BottomNavbarWidget(
+        indexChangeNotifier: indexChangeNotifier,
+      ),
     );
   }
 }
