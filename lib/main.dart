@@ -12,14 +12,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          bodySmall: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
+        ),
+      ),
+
+      // theme: ThemeData.dark(),
+      // darkTheme: ThemeData.light(),
 
       // iconTheme: IconThemeData(color: Colors.black),
-      // textTheme: TextTheme(
-      //   bodySmall: TextStyle(color: Colors.white),
-      //   bodyMedium: TextStyle(color: Colors.white),
-      //   bodyLarge: TextStyle(color: Colors.white),
-      // ),
 
       debugShowCheckedModeBanner: false,
       home: AllScreens(),

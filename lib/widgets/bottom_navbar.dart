@@ -17,8 +17,8 @@ class BottomNavbarWidget extends StatelessWidget {
             },
             index: newIndex,
             animationDuration: Duration(milliseconds: 400),
-            color: Colors.black,
-            backgroundColor: Colors.white,
+            // color: Colors.black,
+            backgroundColor: Colors.black,
             items: const [
               Icon(Icons.home),
               Icon(Icons.collections),

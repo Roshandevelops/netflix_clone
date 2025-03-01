@@ -20,7 +20,7 @@ class AllScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.yellow,
       body: ValueListenableBuilder(
         valueListenable: indexChangeNotifier,
         builder: (context, index, child) {
