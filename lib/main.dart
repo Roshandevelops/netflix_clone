@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/view/all_screens/all_screens.dart';
+import 'package:netflix_project/widgets/constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
         textTheme: const TextTheme(
-          bodySmall: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white),
-          bodyLarge: TextStyle(color: Colors.white),
+          bodySmall: TextStyle(color: kWhiteColor),
+          bodyMedium: TextStyle(color: kWhiteColor),
+          bodyLarge: TextStyle(color: kWhiteColor),
         ),
+        // iconTheme: IconThemeData(color: Colors.white),
       ),
 
       // theme: ThemeData.dark(),
