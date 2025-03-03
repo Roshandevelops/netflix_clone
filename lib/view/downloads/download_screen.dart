@@ -38,13 +38,20 @@ class DownloadScreen extends StatelessWidget {
                   Text("Smart Downloads")
                 ],
               ),
-              const Text("Introducing Downloads for you,"),
               kHeight,
               const Text(
-                "We will  download a personalised selection of movies and shows for you,so there is always something to watch on your device",
+                textAlign: TextAlign.center,
+                "Introducing Downloads for you",
+                style: TextStyle(fontSize: 20),
               ),
-              Container(
-                color: Colors.black,
+              kHeight,
+              const Text(
+                textAlign: TextAlign.center,
+                "We will  download a personalised selection of\nmovies and shows for you,so there's\nalways something to watch on your\ndevice",
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(
+                // color: Colors.black,
                 width: size.width,
                 height: size.width,
                 child: Stack(
@@ -62,23 +69,23 @@ class DownloadScreen extends StatelessWidget {
                     TransformImageWidget(
                       angleRotation: -20,
                       imageList: imageList[1],
-                      margin: EdgeInsets.only(right: 130, bottom: 50),
+                      margin: const EdgeInsets.only(right: 130, bottom: 50),
                     ),
                     TransformImageWidget(
                       imageList: imageList[2],
-                      margin: EdgeInsets.only(left: 0),
+                      margin: const EdgeInsets.only(left: 0),
                     ),
                   ],
                 ),
               ),
-              const ButtonWidget(
+              ButtonWidget(
                 buttoncolor: kButtonColorBlue,
-                text: "Set up",
+                text: "Set Up",
                 fontColor: kWhiteColor,
               ),
               const ButtonWidget(
                 buttoncolor: kButtonColorWhite,
-                text: "See what you can download",
+                text: "See What You Can Download",
                 fontColor: kBlackColor,
               ),
             ],
