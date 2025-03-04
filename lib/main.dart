@@ -14,13 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor:
+            //     //  Colors.green,
+            Colors.black,
         textTheme: const TextTheme(
           bodySmall: TextStyle(color: kWhiteColor),
           bodyMedium: TextStyle(color: kWhiteColor),
           bodyLarge: TextStyle(color: kWhiteColor),
         ),
-        // iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: kWhiteColor),
       ),
 
       // theme: ThemeData.dark(),

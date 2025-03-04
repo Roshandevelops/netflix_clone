@@ -6,6 +6,8 @@ import 'package:netflix_project/view/new_hot/new_hot_screen.dart';
 import 'package:netflix_project/view/search/search_screen.dart';
 import 'package:netflix_project/widgets/bottom_navbar.dart';
 
+ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
+
 class AllScreens extends StatelessWidget {
   const AllScreens({super.key});
 
@@ -19,7 +21,6 @@ class AllScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: indexChangeNotifier,
