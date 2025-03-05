@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchTextTitle extends StatelessWidget {
-  const SearchTextTitle({super.key, required this.heading});
+class TitleWidget extends StatelessWidget {
+  const TitleWidget({super.key, required this.heading});
 
   final String heading;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_project/view/search/widgets/title.dart';
+import 'package:netflix_project/widgets/title_widget.dart';
 import 'package:netflix_project/view/search/widgets/top_search_item_tile.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
@@ -17,7 +17,7 @@ class SearchIdleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchTextTitle(
+        TitleWidget(
           heading: "Top Searches",
         ),
         kHeight20,

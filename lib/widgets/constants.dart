@@ -10,3 +10,4 @@ const kWhiteColor = Colors.white;
 const kBlackColor = Colors.black;
 final kButtonColorBlue = Colors.blueAccent[700];
 const kButtonColorWhite = Colors.white;
+final BorderRadius kBorderradius = BorderRadius.circular(10);

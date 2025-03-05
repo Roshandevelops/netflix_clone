@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:netflix_project/view/search/widgets/movies_tv_tile_widget.dart';
-import 'package:netflix_project/view/search/widgets/title.dart';
+import 'package:flutter/material.dart';
+import 'package:netflix_project/widgets/main_card_widget.dart';
+import 'package:netflix_project/widgets/title_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
 const dummyImageUrl =
@@ -14,7 +15,7 @@ class SearchResultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchTextTitle(heading: "Movies & TV"),
+        TitleWidget(heading: "Movies & TV"),
         kHeight,
         Expanded(
           child: GridView.count(
@@ -26,7 +27,7 @@ class SearchResultWidget extends StatelessWidget {
             children: List.generate(
               20,
               (index) {
-                return MoviesTvCardWidget();
+                return MainCardWidget();
               },
             ),
           ),
