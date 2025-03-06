@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget(
+class MaterialButtonWidget extends StatelessWidget {
+  const MaterialButtonWidget(
       {super.key,
       required this.buttoncolor,
       required this.text,

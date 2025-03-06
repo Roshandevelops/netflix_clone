@@ -2,12 +2,13 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
-class NumberTileWidget extends StatelessWidget {
-  const NumberTileWidget(
-      {super.key,
-      required this.widthk,
-      required this.heightk,
-      required this.index});
+class NumberCardWidget extends StatelessWidget {
+  const NumberCardWidget({
+    super.key,
+    required this.widthk,
+    required this.heightk,
+    required this.index,
+  });
 
   final double? widthk;
   final double? heightk;
@@ -20,7 +21,7 @@ class NumberTileWidget extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              height: 100,
+              height: 200,
               width: 50,
             ),
             Container(
@@ -40,15 +41,17 @@ class NumberTileWidget extends StatelessWidget {
           ],
         ),
         Positioned(
-          left: 15,
-          bottom: 0,
+          left: 0,
+          bottom: -40,
           child: BorderedText(
-            strokeWidth: 10,
+            strokeWidth: 5,
+            strokeColor: Colors.grey,
             child: Text(
               "${index + 1}",
               style: TextStyle(
-                fontSize: 100,
-                color: kWhiteColor,
+                fontSize: 120,
+                fontWeight: FontWeight.bold,
+                color: kBlackColor,
                 decoration: TextDecoration.none,
                 // decorationColor: Colors.white,
               ),

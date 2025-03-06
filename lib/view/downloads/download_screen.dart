@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:netflix_project/widgets/app_bar_widget.dart';
-import 'package:netflix_project/widgets/button_widget.dart';
+import 'package:netflix_project/widgets/material_button_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:netflix_project/widgets/transform_image_widget.dart';
 
@@ -78,12 +78,12 @@ class DownloadScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              ButtonWidget(
+              MaterialButtonWidget(
                 buttoncolor: kButtonColorBlue,
                 text: "Set Up",
                 fontColor: kWhiteColor,
               ),
-              const ButtonWidget(
+              const MaterialButtonWidget(
                 buttoncolor: kButtonColorWhite,
                 text: "See What You Can Download",
                 fontColor: kBlackColor,

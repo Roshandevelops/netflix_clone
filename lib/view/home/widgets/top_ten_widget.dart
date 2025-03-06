@@ -20,7 +20,7 @@ class TopTenWidgetTile extends StatelessWidget {
             children: List.generate(
               10,
               (index) {
-                return NumberTileWidget(
+                return NumberCardWidget(
                   index: index,
                   widthk: 140,
                   heightk: 200,
