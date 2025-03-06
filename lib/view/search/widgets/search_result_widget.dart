@@ -15,19 +15,22 @@ class SearchResultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleWidget(heading: "Movies & TV"),
+        const TitleWidget(heading: "Movies & TV"),
         kHeight,
         Expanded(
           child: GridView.count(
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 2,
             childAspectRatio: 1 / 1.4,
             shrinkWrap: true,
             crossAxisCount: 3,
             children: List.generate(
               20,
               (index) {
-                return MainCardWidget();
+                return const MainCardWidget(
+                  height: 200,
+                  width: 120,
+                );
               },
             ),
           ),

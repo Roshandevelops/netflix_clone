@@ -27,7 +27,10 @@ class TopSearchesTileWidget extends StatelessWidget {
         Expanded(
           child: Text(
             "Movie name",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
         ),
         CircleAvatar(

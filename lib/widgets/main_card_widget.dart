@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
 class MainCardWidget extends StatelessWidget {
-  const MainCardWidget({super.key, this.width, this.height});
+  const MainCardWidget({super.key, required this.width, this.height});
   final double? width;
   final double? height;
 
@@ -14,7 +14,7 @@ class MainCardWidget extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
-            // color: Colors.red,
+            color: Colors.red,
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
@@ -24,7 +24,8 @@ class MainCardWidget extends StatelessWidget {
             borderRadius: kBorderradius,
           ),
         ),
-        kWidth
+        // kWidth,
+        kHeight,
       ],
     );
   }

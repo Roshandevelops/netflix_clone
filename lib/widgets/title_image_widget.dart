@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_project/widgets/constants.dart';
 import 'package:netflix_project/widgets/main_card_widget.dart';
 import 'package:netflix_project/widgets/title_widget.dart';
 
@@ -22,9 +23,14 @@ class TitleImageWidget extends StatelessWidget {
             children: List.generate(
               10,
               (index) {
-                return MainCardWidget(
-                  width: 140,
-                  height: 200,
+                return Row(
+                  children: [
+                    MainCardWidget(
+                      width: 120,
+                      height: 200,
+                    ),
+                    kWidth,
+                  ],
                 );
               },
             ),
