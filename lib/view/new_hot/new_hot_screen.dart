@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_project/view/home/widgets/custom_button_widget.dart';
 import 'package:netflix_project/view/new_hot/widgets/coming_soon_widget.dart';
 import 'package:netflix_project/view/new_hot/widgets/everyone_widget.dart';
-import 'package:netflix_project/view/new_hot/widgets/moviename_content_widget.dart';
-import 'package:netflix_project/widgets/stack_image_icon_widget.dart';
-import 'package:netflix_project/widgets/app_bar_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
 class NewHotScreen extends StatelessWidget {
@@ -16,11 +12,11 @@ class NewHotScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: const Size.fromHeight(100),
           child: AppBar(
-            title: Text(
+            title: const Text(
               "New & Hot",
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: kWhiteColor,
@@ -48,8 +44,9 @@ class NewHotScreen extends StatelessWidget {
               ),
               labelColor: kBlackColor,
               unselectedLabelColor: kWhiteColor,
-              labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              tabs: [
+              labelStyle:
+                  const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              tabs: const [
                 Tab(
                   text: "Coming Soon",
                 ),
@@ -59,9 +56,6 @@ class NewHotScreen extends StatelessWidget {
               ],
             ),
           ),
-          // AppBarWidget(
-          //   title: "New & Hot",
-          // ),
         ),
         body: TabBarView(
           children: [
@@ -76,7 +70,7 @@ class NewHotScreen extends StatelessWidget {
   Widget _buildComingSoon(BuildContext context) {
     return ListView.builder(
       itemBuilder: (ctx, index) {
-        return ComingSoonWidget();
+        return const ComingSoonWidget();
       },
       itemCount: 3,
     );
@@ -85,7 +79,7 @@ class NewHotScreen extends StatelessWidget {
   Widget _buildEveroneWattching() {
     return ListView.builder(
       itemBuilder: (ctx, index) {
-        return EveryonesWatchingWidget();
+        return const EveryonesWatchingWidget();
       },
       itemCount: 3,
     );

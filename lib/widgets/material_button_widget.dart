@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_project/widgets/constants.dart';
 
 class MaterialButtonWidget extends StatelessWidget {
   const MaterialButtonWidget(

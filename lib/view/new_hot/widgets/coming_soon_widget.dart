@@ -12,7 +12,7 @@ class ComingSoonWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           // color: Colors.red,
           width: 50,
           height: 500,
@@ -41,7 +41,7 @@ class ComingSoonWidget extends StatelessWidget {
           // color: Colors.amberAccent,
           width: size.width - 60,
           height: 450,
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               StackImageIconWidget(),

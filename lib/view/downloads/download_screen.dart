@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:netflix_project/widgets/app_bar_widget.dart';
 import 'package:netflix_project/widgets/material_button_widget.dart';
@@ -19,7 +17,7 @@ class DownloadScreen extends StatelessWidget {
     ];
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           title: "Downloads",
@@ -27,7 +25,7 @@ class DownloadScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: ListView(
             children: [
               const Row(

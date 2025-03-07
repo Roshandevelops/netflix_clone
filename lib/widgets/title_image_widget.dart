@@ -23,7 +23,7 @@ class TitleImageWidget extends StatelessWidget {
             children: List.generate(
               10,
               (index) {
-                return Row(
+                return const Row(
                   children: [
                     MainCardWidget(
                       width: 120,

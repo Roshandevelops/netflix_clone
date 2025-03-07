@@ -17,7 +17,7 @@ class MovieNameAndContentWidget extends StatelessWidget {
       children: [
         Text(
           movieName,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
@@ -25,7 +25,7 @@ class MovieNameAndContentWidget extends StatelessWidget {
         kHeight,
         Text(
           content,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
             color: kGreyColor,
           ),

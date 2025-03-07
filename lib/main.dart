@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
         ),
         textTheme: const TextTheme(
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(color: kWhiteColor),
           bodyLarge: TextStyle(color: kWhiteColor),
         ),
-        iconTheme: IconThemeData(color: kWhiteColor),
+        iconTheme: const IconThemeData(color: kWhiteColor),
       ),
 
       // theme: ThemeData.dark(),

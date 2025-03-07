@@ -20,7 +20,7 @@ class NumberCardWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 200,
               width: 50,
             ),
@@ -29,7 +29,7 @@ class NumberCardWidget extends StatelessWidget {
               height: heightk,
               decoration: BoxDecoration(
                 // color: Colors.red,
-                image: DecorationImage(
+                image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
                       "https://image.tmdb.org/t/p/w1280/31GlRQMiDunO8cl3NxTz34U64rf.jpg"),
@@ -48,7 +48,7 @@ class NumberCardWidget extends StatelessWidget {
             strokeColor: Colors.grey,
             child: Text(
               "${index + 1}",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 120,
                 fontWeight: FontWeight.bold,
                 color: kBlackColor,

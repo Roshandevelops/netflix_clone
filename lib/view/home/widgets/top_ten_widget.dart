@@ -10,7 +10,7 @@ class TopTenWidgetTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleWidget(
+        const TitleWidget(
           heading: "Top 10 Tv Shows in India Today",
         ),
         LimitedBox(

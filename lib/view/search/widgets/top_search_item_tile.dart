@@ -24,7 +24,7 @@ class TopSearchesTileWidget extends StatelessWidget {
           ),
         ),
         kWidth,
-        Expanded(
+        const Expanded(
           child: Text(
             "Movie name",
             style: TextStyle(
@@ -33,7 +33,7 @@ class TopSearchesTileWidget extends StatelessWidget {
             ),
           ),
         ),
-        CircleAvatar(
+        const CircleAvatar(
           radius: 25,
           backgroundColor: kWhiteColor,
           child: CircleAvatar(

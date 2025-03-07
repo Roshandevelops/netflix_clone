@@ -1,16 +1,13 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix_project/view/home/widgets/background_card_widget.dart';
-import 'package:netflix_project/view/home/widgets/number_card_widget.dart';
+
 import 'package:netflix_project/view/home/widgets/top_ten_widget.dart';
-import 'package:netflix_project/view/search/widgets/search_result_widget.dart';
+
 import 'package:netflix_project/widgets/constants.dart';
-import 'package:netflix_project/view/home/widgets/custom_button_widget.dart';
-import 'package:netflix_project/widgets/main_card_widget.dart';
+
 import 'package:netflix_project/widgets/title_image_widget.dart';
-import 'package:netflix_project/widgets/title_widget.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
@@ -58,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   scrollNotifier.value == true
                       ? AnimatedContainer(
-                          duration: Duration(milliseconds: 1000),
+                          duration: const Duration(milliseconds: 1000),
                           height: 90,
                           width: double.infinity,
                           color: Colors.black.withOpacity(0.1),
@@ -71,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                                     width: 50,
                                     height: 60,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   const Icon(Icons.cast, color: kWhiteColor),
                                   kWidth,
                                   Container(
@@ -82,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                                   kWidth
                                 ],
                               ),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [

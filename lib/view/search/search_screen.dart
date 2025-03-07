@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_project/view/search/widgets/search_idle_widget.dart';
 import 'package:netflix_project/view/search/widgets/search_result_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 

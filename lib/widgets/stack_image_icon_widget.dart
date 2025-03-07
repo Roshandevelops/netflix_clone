@@ -24,7 +24,7 @@ class StackImageIconWidget extends StatelessWidget {
             radius: 25,
             child: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.volume_off,
                 size: 30,
                 color: kWhiteColor,

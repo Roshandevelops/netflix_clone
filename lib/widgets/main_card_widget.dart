@@ -15,7 +15,7 @@ class MainCardWidget extends StatelessWidget {
           height: height,
           decoration: BoxDecoration(
             color: Colors.red,
-            image: DecorationImage(
+            image: const DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
                 "https://media.themoviedb.org/t/p/w500_and_h282_face/kYgQzzjNis5jJalYtIHgrom0gOx.jpg",
