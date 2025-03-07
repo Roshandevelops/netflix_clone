@@ -21,7 +21,9 @@ class DownloadScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
-        child: AppBarWidget(title: "Downloads"),
+        child: AppBarWidget(
+          title: "Downloads",
+        ),
       ),
       body: SafeArea(
         child: Padding(

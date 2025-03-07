@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                       TitleImageWidget(title: "Tense Dramas"),
                       kHeight,
                       TitleImageWidget(title: "South Indian Cinema"),
+                      kHeight,
                     ],
                   ),
                   scrollNotifier.value == true
