@@ -16,11 +16,12 @@ class SetUpWidget extends StatelessWidget {
           fontColor: kWhiteColor,
         ),
         const MaterialButtonWidget(
-          buttonWidth: double.infinity,
+          // buttonWidth: double.infinity,
           buttoncolor: kButtonColorWhite,
           text: "See What You Can Download",
           fontColor: kBlackColor,
         ),
+        kHeight20,
       ],
     );
   }

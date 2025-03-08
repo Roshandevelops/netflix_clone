@@ -14,7 +14,7 @@ class SmartDownloadsWidget extends StatelessWidget {
         ),
         kWidth,
         Text("Smart Downloads"),
-        kHeight,
+        // kHeight20,
       ],
     );
   }

@@ -7,7 +7,7 @@ class MaterialButtonWidget extends StatelessWidget {
     required this.text,
     required this.fontColor,
     this.buttonHeight,
-    required this.buttonWidth,
+    this.buttonWidth,
   });
   final Color? buttoncolor;
   final String text;
@@ -22,7 +22,7 @@ class MaterialButtonWidget extends StatelessWidget {
       height: buttonHeight,
       child: MaterialButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(6),
         ),
         color: buttoncolor,
         onPressed: () {},

@@ -48,7 +48,7 @@ class IntroduceWidget extends StatelessWidget {
                 angleRotation: 20,
                 imageList: imageList[0],
                 margin: const EdgeInsets.only(
-                  left: 155,
+                  left: 150,
                   bottom: 30,
                 ),
               ),
@@ -61,7 +61,7 @@ class IntroduceWidget extends StatelessWidget {
                 angleRotation: -20,
                 imageList: imageList[1],
                 margin: const EdgeInsets.only(
-                  right: 155,
+                  right: 150,
                   bottom: 30,
                 ),
               ),
