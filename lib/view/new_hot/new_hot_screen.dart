@@ -59,15 +59,15 @@ class NewHotScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            _buildComingSoon(context),
-            _buildEveroneWattching(),
+            _buildComingSoon(),
+            _buildEveryOneWatching(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildComingSoon(BuildContext context) {
+  Widget _buildComingSoon() {
     return ListView.builder(
       itemBuilder: (ctx, index) {
         return const ComingSoonWidget();
@@ -76,7 +76,7 @@ class NewHotScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEveroneWattching() {
+  Widget _buildEveryOneWatching() {
     return ListView.builder(
       itemBuilder: (ctx, index) {
         return const EveryonesWatchingWidget();
