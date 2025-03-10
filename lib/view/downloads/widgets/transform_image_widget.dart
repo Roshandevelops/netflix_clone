@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class TransformImageWidget extends StatelessWidget {
   const TransformImageWidget({
     super.key,
-    required this.imageList,
+    required this.imageUrl,
     this.angleRotation = 0,
     required this.margin,
     required this.containerSize,
     this.borderRadius = 10,
   });
 
-  final String imageList;
+  final String imageUrl;
   final double angleRotation;
   final EdgeInsets margin;
 
@@ -33,7 +33,7 @@ class TransformImageWidget extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: NetworkImage(
-              imageList,
+              imageUrl,
             ),
           ),
         ),
