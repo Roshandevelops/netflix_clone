@@ -4,7 +4,6 @@ import 'package:netflix_project/view/downloads/widgets/smart_download_widget.dar
 import 'package:netflix_project/view/downloads/widgets/introduce_widget.dart';
 import 'package:netflix_project/view/downloads/widgets/setup_widget.dart';
 import 'package:netflix_project/widgets/app_bar_widget.dart';
-import 'package:netflix_project/widgets/constants.dart';
 import 'package:provider/provider.dart';
 
 class DownloadScreen extends StatefulWidget {
@@ -25,9 +24,8 @@ class _DownloadScreenState extends State<DownloadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final widgetList = [];
-    return Scaffold(
-      appBar: const PreferredSize(
+    return const Scaffold(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           title: "Downloads",
@@ -35,16 +33,16 @@ class _DownloadScreenState extends State<DownloadScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: 10,
           ),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SmartDownloadsWidget(),
-                const IntroduceWidget(),
-                const SetUpWidget(),
+                SmartDownloadsWidget(),
+                IntroduceWidget(),
+                SetUpWidget(),
               ],
             ),
           ),
