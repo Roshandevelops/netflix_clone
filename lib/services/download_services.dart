@@ -11,7 +11,7 @@ class DownloadServices {
     return DownloadServices.instance;
   }
 
-  Future<dynamic> fetchImages() async {
+  Future<List<DownloadModel>> fetchImages() async {
     final response = await http.get(
       Uri.parse(
         ApiEndPoints.trendingAll,
@@ -36,7 +36,7 @@ class DownloadServices {
 
       return result;
     } else {
-      log("Exception");
+      return [];
     }
   }
 }
