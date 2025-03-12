@@ -35,8 +35,13 @@ class IntroduceWidget extends StatelessWidget {
               ),
             ),
             Consumer<DownloadProvider>(
+<<<<<<< HEAD
                 builder: (context, downloadProviderValue, child) {
               if (downloadProviderValue.isLoading) {
+=======
+                builder: (context, providerValue, child) {
+              if (providerValue.isLoading) {
+>>>>>>> 2b9f3e0405186bd6f8a051da894778d8d7fe5b9b
                 return const Expanded(
                   child: Center(
                     child: CircularProgressIndicator(),
