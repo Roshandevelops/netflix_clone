@@ -6,13 +6,13 @@ class DownloadProvider extends ChangeNotifier {
   bool isLoading = true;
 
   List<DownloadModel> newFetchedItems = [];
-  Future<dynamic> getData() async {
+  Future<void> getData() async {
     isLoading = true;
     notifyListeners();
     final fetchedItems = await DownloadServices.instance.fetchImages();
     newFetchedItems = fetchedItems;
     isLoading = false;
-    // fetchedItems;
+
     notifyListeners();
   }
 }

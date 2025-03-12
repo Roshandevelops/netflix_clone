@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_project/controller/search_provider.dart';
+import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/widgets/title_widget.dart';
-import 'package:netflix_project/view/search/widgets/top_search_item_tile.dart';
+import 'package:netflix_project/view/search/widgets/top_searches_tile_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
+import 'package:provider/provider.dart';
 
 const verticalImageUrl = [
   "https://media.themoviedb.org/t/p/w500_and_h282_face/kYgQzzjNis5jJalYtIHgrom0gOx.jpg",
@@ -22,15 +25,33 @@ class SearchIdleWidget extends StatelessWidget {
         ),
         kHeight20,
         Expanded(
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (ctx, index) {
-              return const TopSearchesTileWidget();
+          child: Consumer<SearchProvider>(
+            builder: (context, searchProviderValue, child) {
+              if (searchProviderValue.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (searchProviderValue.topResultData.isEmpty) {
+                return const Center(
+                  child: Text("List is empty"),
+                );
+              } else {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (ctx, index) {
+                    final movie = searchProviderValue.topResultData[index];
+                    return TopSearchesTileWidget(
+                      title: movie.title ?? "No tittle provided",
+                      imageUrl: "$imageAppendUrl${movie.posterPath}",
+                    );
+                  },
+                  separatorBuilder: (ctx, index) {
+                    return kHeight20;
+                  },
+                  itemCount: searchProviderValue.topResultData.length,
+                );
+              }
             },
-            separatorBuilder: (ctx, index) {
-              return kHeight20;
-            },
-            itemCount: 15,
           ),
         )
       ],

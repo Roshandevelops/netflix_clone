@@ -35,9 +35,9 @@ class IntroduceWidget extends StatelessWidget {
               ),
             ),
             Consumer<DownloadProvider>(
-                builder: (context, providerValue, child) {
-              if (providerValue.isLoading) {
-                return Expanded(
+                builder: (context, downloadProviderValue, child) {
+              if (downloadProviderValue.isLoading) {
+                return const Expanded(
                   child: Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -63,7 +63,7 @@ class IntroduceWidget extends StatelessWidget {
                             ),
                             angleRotation: 20,
                             imageUrl:
-                                "$imageAppendUrl${providerValue.newFetchedItems[3].posterPath}",
+                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[3].posterPath}",
 
                             // Provider.of<DownloadProvider>(context).newFetchedItems[1],
                             // imageList[0],
@@ -80,7 +80,7 @@ class IntroduceWidget extends StatelessWidget {
                             ),
                             angleRotation: -20,
                             imageUrl:
-                                "$imageAppendUrl${providerValue.newFetchedItems[4].posterPath}",
+                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[4].posterPath}",
                             // Provider.of<DownloadProvider>(context).newFetchedItems[2],
                             // imageList[1],
                             margin: const EdgeInsets.only(
@@ -95,7 +95,7 @@ class IntroduceWidget extends StatelessWidget {
                               size.width * 0.65,
                             ),
                             imageUrl:
-                                "$imageAppendUrl${providerValue.newFetchedItems[5].posterPath}",
+                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[5].posterPath}",
                             // Provider.of<DownloadProvider>(context).newFetchedItems[3],
                             // imageList[2],
                             margin: const EdgeInsets.only(

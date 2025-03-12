@@ -19,8 +19,8 @@ class SearchResultWidget extends StatelessWidget {
         kHeight,
         Expanded(
           child: GridView.count(
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 5,
             childAspectRatio: 1 / 1.4,
             shrinkWrap: true,
             crossAxisCount: 3,

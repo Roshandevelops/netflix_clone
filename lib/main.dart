@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/download_provider.dart';
+import 'package:netflix_project/controller/search_provider.dart';
 import 'package:netflix_project/view/all_screens/all_screens.dart';
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,12 @@ class MyApp extends StatelessWidget {
           create: (context) {
             return DownloadProvider();
           },
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return SearchProvider();
+          },
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
