@@ -26,11 +26,11 @@ class SearchServices {
         final json = jsonDecode(response.body) as Map;
         final result = (json["results"] as List).map(
           (e) {
-            log(e["title"]);
+            // log(e["poster_path"]);
             return SearchModel.fromJson(e);
           },
         ).toList();
-        // log(result.toString());
+        log(result.toString());
         return result;
       } else {
         return [];

@@ -1,31 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_project/controller/search_provider.dart';
 import 'package:netflix_project/view/search/widgets/search_idle_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
-import 'package:provider/provider.dart';
 
-class SearchScreen extends StatefulWidget {
+class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
-}
-
-class _SearchScreenState extends State<SearchScreen> {
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<SearchProvider>(context, listen: false).fetchSearchData();
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<SearchProvider>(context, listen: false).fetchSearchData();
-    // });
     return const Scaffold(
       body: SafeArea(
         child: Padding(

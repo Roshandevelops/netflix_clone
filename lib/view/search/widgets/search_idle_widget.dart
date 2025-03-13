@@ -6,14 +6,21 @@ import 'package:netflix_project/view/search/widgets/top_searches_tile_widget.dar
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:provider/provider.dart';
 
-const verticalImageUrl = [
-  "https://media.themoviedb.org/t/p/w500_and_h282_face/kYgQzzjNis5jJalYtIHgrom0gOx.jpg",
-  "https://media.themoviedb.org/t/p/w500_and_h282_face/rOmUuQEZfPXglwFs5ELLLUDKodL.jpg",
-  "https://media.themoviedb.org/t/p/w500_and_h282_face/vZG7PrX9HmdgL5qfZRjhJsFYEIA.jpg",
-];
-
-class SearchIdleWidget extends StatelessWidget {
+class SearchIdleWidget extends StatefulWidget {
   const SearchIdleWidget({super.key});
+
+  @override
+  State<SearchIdleWidget> createState() => _SearchIdleWidgetState();
+}
+
+class _SearchIdleWidgetState extends State<SearchIdleWidget> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<SearchProvider>(context, listen: false).fetchSearchData();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +47,15 @@ class SearchIdleWidget extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (ctx, index) {
                     final movie = searchProviderValue.topResultData[index];
+
+                    String imageUrl = movie.posterPath != null
+                        ? "$imageAppendUrl${movie.posterPath}"
+                        : "https://image.tmdb.org/t/p/w500/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg";
+
                     return TopSearchesTileWidget(
                       title: movie.title ?? "No tittle provided",
-                      imageUrl: "$imageAppendUrl${movie.posterPath}",
+                      imageUrl: imageUrl,
+                      // "$imageAppendUrl${movie.posterPath}",
                     );
                   },
                   separatorBuilder: (ctx, index) {
