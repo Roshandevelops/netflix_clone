@@ -7,6 +7,10 @@ class DownloadProvider extends ChangeNotifier {
 
   List<DownloadModel> newFetchedItems = [];
   Future<void> getData() async {
+    if (newFetchedItems.isNotEmpty) {
+      newFetchedItems;
+      return;
+    }
     isLoading = true;
     notifyListeners();
     final fetchedItems = await DownloadServices.instance.fetchImages();

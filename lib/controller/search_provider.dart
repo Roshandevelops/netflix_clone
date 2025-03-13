@@ -6,6 +6,10 @@ class SearchProvider extends ChangeNotifier {
   bool isLoading = true;
   List<SearchModel> topResultData = [];
   Future<void> fetchSearchData() async {
+    if (topResultData.isNotEmpty) {
+      topResultData;
+      return;
+    }
     isLoading = true;
     notifyListeners();
     final fetchedItems = await SearchServices.instance.fetchTopSearchIdleData();
