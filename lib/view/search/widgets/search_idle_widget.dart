@@ -6,21 +6,8 @@ import 'package:netflix_project/view/search/widgets/top_searches_tile_widget.dar
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:provider/provider.dart';
 
-class SearchIdleWidget extends StatefulWidget {
+class SearchIdleWidget extends StatelessWidget {
   const SearchIdleWidget({super.key});
-
-  @override
-  State<SearchIdleWidget> createState() => _SearchIdleWidgetState();
-}
-
-class _SearchIdleWidgetState extends State<SearchIdleWidget> {
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<SearchProvider>(context, listen: false).fetchSearchData();
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

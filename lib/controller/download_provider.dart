@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_project/models/download_model.dart';
+import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/services/download_services.dart';
 
 class DownloadProvider extends ChangeNotifier {
   bool isLoading = true;
 
-  List<DownloadModel> newFetchedItems = [];
+  List<MovieModel> fetchedItems = [];
   Future<void> getData() async {
-    if (newFetchedItems.isNotEmpty) {
-      newFetchedItems;
+    if (fetchedItems.isNotEmpty) {
+      fetchedItems;
       return;
     }
     isLoading = true;
     notifyListeners();
-    final fetchedItems = await DownloadServices.instance.fetchImages();
-    newFetchedItems = fetchedItems;
+    fetchedItems = await DownloadServices.instance.fetchImages();
+    // newFetchedItems = fetchedItems;
     isLoading = false;
 
     notifyListeners();
