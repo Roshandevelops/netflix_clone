@@ -42,6 +42,10 @@ class IntroduceWidget extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
                 );
+              } else if (downloadProviderValue.fetchedItems.isEmpty) {
+                return Center(
+                  child: Text("List Empty"),
+                );
               } else {
                 return Expanded(
                   child: SingleChildScrollView(
@@ -63,10 +67,7 @@ class IntroduceWidget extends StatelessWidget {
                             ),
                             angleRotation: 20,
                             imageUrl:
-                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[3].posterPath}",
-
-                            // Provider.of<DownloadProvider>(context).newFetchedItems[1],
-                            // imageList[0],
+                                "$imageAppendUrl${downloadProviderValue.fetchedItems[3].posterPath}",
                             margin: const EdgeInsets.only(
                               left: 150,
                               bottom: 30,
@@ -80,7 +81,7 @@ class IntroduceWidget extends StatelessWidget {
                             ),
                             angleRotation: -20,
                             imageUrl:
-                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[4].posterPath}",
+                                "$imageAppendUrl${downloadProviderValue.fetchedItems[4].posterPath}",
                             // Provider.of<DownloadProvider>(context).newFetchedItems[2],
                             // imageList[1],
                             margin: const EdgeInsets.only(
@@ -95,7 +96,7 @@ class IntroduceWidget extends StatelessWidget {
                               size.width * 0.65,
                             ),
                             imageUrl:
-                                "$imageAppendUrl${downloadProviderValue.newFetchedItems[5].posterPath}",
+                                "$imageAppendUrl${downloadProviderValue.fetchedItems[5].posterPath}",
                             // Provider.of<DownloadProvider>(context).newFetchedItems[3],
                             // imageList[2],
                             margin: const EdgeInsets.only(

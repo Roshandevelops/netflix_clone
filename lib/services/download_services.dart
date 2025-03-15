@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:netflix_project/core/api_end_points.dart';
-import 'package:netflix_project/models/download_model.dart';
+import 'package:netflix_project/models/movie_model.dart';
 
 class DownloadServices {
   DownloadServices.internal();
@@ -11,7 +11,7 @@ class DownloadServices {
     return DownloadServices.instance;
   }
 
-  Future<List<DownloadModel>> fetchImages() async {
+  Future<List<MovieModel>> fetchImages() async {
     try {
       final response = await http.get(
         Uri.parse(
@@ -30,7 +30,7 @@ class DownloadServices {
         final result = (json["results"] as List).map(
           (e) {
             log(e["poster_path"]);
-            return DownloadModel.fromJson(e);
+            return MovieModel.fromJson(e);
           },
         ).toList();
 

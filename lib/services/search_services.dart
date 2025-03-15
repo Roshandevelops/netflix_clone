@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:netflix_project/core/api_end_points.dart';
-import 'package:netflix_project/models/search_model.dart';
+import 'package:netflix_project/core/strings.dart';
+import 'package:netflix_project/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
 class SearchServices {
@@ -11,10 +11,12 @@ class SearchServices {
     return SearchServices.instance;
   }
 
-  Future<List<SearchModel>> fetchTopSearchIdleData() async {
+  Future<List<MovieModel>> fetchTopSearchIdleData(String query) async {
     try {
       final response = await http.get(
-        Uri.parse(ApiEndPoints.topSearches),
+        Uri.parse(
+          '$kBaseUrl/search/movie?query=$query&include_adult=false&language=en-US&page=1',
+        ),
         headers: {
           "Authorization":
               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDRmNjVmMDI2YTA4NDEwNGZlNjIyZTNkYTU3M2Q4ZCIsIm5iZiI6MTc0MDg5OTg1OC4yNTUsInN1YiI6IjY3YzQwNjEyNjQ2NmJkOGVkMjRlMTZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C33USMZlPNV96p8JRgVOs3YPPm7ucEz3Lb28vkjZqx0",
@@ -22,15 +24,15 @@ class SearchServices {
         },
       );
       if (response.statusCode == 200) {
-        log(response.toString());
+        // log(response.body.toString());
         final json = jsonDecode(response.body) as Map;
         final result = (json["results"] as List).map(
           (e) {
-            // log(e.toString());
-            return SearchModel.fromJson(e);
+            // log(e["poster_path"].toString());
+            return MovieModel.fromJson(e);
           },
         ).toList();
-        // log(result.toString());
+        log(result.toString());
         return result;
       } else {
         return [];
