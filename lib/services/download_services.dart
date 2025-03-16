@@ -18,8 +18,7 @@ class DownloadServices {
           ApiEndPoints.trendingAll,
         ),
         headers: {
-          "Authorization":
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDRmNjVmMDI2YTA4NDEwNGZlNjIyZTNkYTU3M2Q4ZCIsIm5iZiI6MTc0MDg5OTg1OC4yNTUsInN1YiI6IjY3YzQwNjEyNjQ2NmJkOGVkMjRlMTZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C33USMZlPNV96p8JRgVOs3YPPm7ucEz3Lb28vkjZqx0",
+          "Authorization": ApiEndPoints.apiAccessToken,
           "accept": "application/json"
         },
       );

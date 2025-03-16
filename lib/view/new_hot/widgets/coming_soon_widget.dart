@@ -5,14 +5,29 @@ import 'package:netflix_project/widgets/stack_image_icon_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
 class ComingSoonWidget extends StatelessWidget {
-  const ComingSoonWidget({super.key});
+  final String id;
+  final String month;
+  final String day;
+  final String movieName;
+  final String posterPath;
+  final String description;
+
+  const ComingSoonWidget({
+    super.key,
+    required this.movieName,
+    required this.day,
+    required this.description,
+    required this.id,
+    required this.month,
+    required this.posterPath,
+  });
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           // color: Colors.red,
           width: 50,
           height: 500,
@@ -21,15 +36,17 @@ class ComingSoonWidget extends StatelessWidget {
             children: [
               kHeight20,
               Text(
-                "FEB",
-                style: TextStyle(
+                month,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
                   fontSize: 16,
                   color: kGreyColor,
                 ),
               ),
               Text(
-                "11",
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -41,23 +58,30 @@ class ComingSoonWidget extends StatelessWidget {
           // color: Colors.amberAccent,
           width: size.width - 60,
           height: 450,
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StackImageIconWidget(),
+              StackImageIconWidget(
+                posterPath: posterPath,
+              ),
               kHeight20,
               Row(
                 children: [
-                  Text(
-                    "MOVIE NAME",
-                    style: TextStyle(
-                      letterSpacing: -2,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        letterSpacing: -2,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                  Spacer(),
-                  Row(
+                  // Spacer(),
+                  const Row(
                     children: [
                       CustomButtonWidget(
                         iconData: Icons.notification_important,
@@ -77,12 +101,11 @@ class ComingSoonWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Coming on Friday"),
+              Text("Coming on $day $month"),
               kHeight20,
               MovieNameAndContentWidget(
-                content:
-                    "Landing the lead in the school musical is a\ndream come true for jodi,until the pressure\nsends her confidence --and her relationship--\ninto a tailspin",
-                movieName: "Moviename",
+                content: description,
+                movieName: movieName,
               ),
             ],
           ),

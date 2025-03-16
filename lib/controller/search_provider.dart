@@ -8,9 +8,10 @@ class SearchProvider extends ChangeNotifier {
   Future<void> fetchSearchData(String value) async {
     isLoading = true;
     notifyListeners();
-    final fetchedItems =
-        await SearchServices.instance.fetchTopSearchIdleData(value);
-    topResultData = fetchedItems;
+    topResultData =
+        await SearchServices.instance.fetchTopSearchIdleData(query: value);
+    // print(topResultData.toString());
+    // topResultData = fetchedItems;
     isLoading = false;
     notifyListeners();
   }
