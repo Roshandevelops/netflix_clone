@@ -16,7 +16,9 @@ class MovieNameAndContentWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
+          maxLines: 1,
           movieName,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
@@ -24,6 +26,8 @@ class MovieNameAndContentWidget extends StatelessWidget {
         ),
         kHeight,
         Text(
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
           content,
           style: const TextStyle(
             fontSize: 15,

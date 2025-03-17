@@ -43,7 +43,7 @@ class IntroduceWidget extends StatelessWidget {
                   ),
                 );
               } else if (downloadProviderValue.fetchedItems.isEmpty) {
-                return Center(
+                return const Center(
                   child: Text("List Empty"),
                 );
               } else {
