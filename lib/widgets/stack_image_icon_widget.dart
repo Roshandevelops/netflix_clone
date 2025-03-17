@@ -4,10 +4,10 @@ import 'package:netflix_project/widgets/constants.dart';
 class StackImageIconWidget extends StatelessWidget {
   const StackImageIconWidget({
     super.key,
-    required this.posterPath,
+    this.posterPath,
   });
 
-  final String posterPath;
+  final String? posterPath;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class StackImageIconWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: 200,
-          child: Image.network(fit: BoxFit.cover, posterPath
+          child: Image.network(fit: BoxFit.cover, posterPath!
               // newAndHotTempImage,
               ),
         ),
