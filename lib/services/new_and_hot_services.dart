@@ -29,12 +29,12 @@ class NewAndHotServices {
         final result = (json["results"] as List).map(
           (e) {
             // log(e.toString());
-            log(e["poster_path"].toString());
+            // log(e["poster_path"].toString());
             return NewAndHotModel.fromJson(e);
           },
         ).toList();
 
-        log(result.toString());
+        // log(result.toString());
         return result;
       } else {
         return [];
@@ -60,7 +60,7 @@ class NewAndHotServices {
         final json = jsonDecode(response.body) as Map;
         final result = (json["results"] as List).map(
           (e) {
-            // log(e["poster_path"].toString());
+            log(e["name"].toString());
             return NewAndHotModel.fromJson(e);
           },
         ).toList();
@@ -70,7 +70,7 @@ class NewAndHotServices {
         return [];
       }
     } catch (e) {
-      return [];
+      return Future.error(e);
     }
   }
 }

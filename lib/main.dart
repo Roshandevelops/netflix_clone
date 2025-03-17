@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/download_provider.dart';
-import 'package:netflix_project/controller/hot_and_new_provider.dart';
+import 'package:netflix_project/controller/new_and_hot_provider.dart';
 import 'package:netflix_project/controller/search_provider.dart';
 import 'package:netflix_project/view/all_screens/all_screens.dart';
 import 'package:netflix_project/widgets/constants.dart';
