@@ -16,8 +16,8 @@ class DownloadScreen extends StatefulWidget {
 class _DownloadScreenState extends State<DownloadScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<DownloadProvider>(context, listen: false).getData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Provider.of<DownloadProvider>(context, listen: false).getData();
     });
     super.initState();
   }

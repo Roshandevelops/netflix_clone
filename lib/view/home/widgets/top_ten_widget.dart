@@ -3,7 +3,9 @@ import 'package:netflix_project/view/home/widgets/number_card_widget.dart';
 import 'package:netflix_project/widgets/title_widget.dart';
 
 class TopTenWidgetTile extends StatelessWidget {
-  const TopTenWidgetTile({super.key});
+  const TopTenWidgetTile({super.key, required this.numberUrl});
+
+  final List<String> numberUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,10 @@ class TopTenWidgetTile extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              10,
+              numberUrl.length,
               (index) {
                 return NumberCardWidget(
+                  numberCardUrl: numberUrl[index],
                   index: index,
                   widthk: 140,
                   heightk: 200,

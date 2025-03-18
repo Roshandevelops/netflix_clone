@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:netflix_project/models/new_hot_model.dart';
 import 'package:netflix_project/services/new_and_hot_services.dart';
@@ -14,7 +12,7 @@ class NewAndHotProvider extends ChangeNotifier {
     comingSoonList = await NewAndHotServices.instance.fetchNewAndHotMovie();
     isLoading = false;
     notifyListeners();
-    // log("checking${comingSoonList.toString()}");
+
     isLoading = true;
     notifyListeners();
 

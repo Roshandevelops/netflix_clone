@@ -16,9 +16,24 @@ class StackImageIconWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: 200,
-          child: Image.network(fit: BoxFit.cover, posterPath!
-              // newAndHotTempImage,
-              ),
+          child: Image.network(
+            fit: BoxFit.cover,
+            posterPath!,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+            errorBuilder: (context, error, stackTrace) {
+              return Center(
+                child: Icon(Icons.signal_wifi_connected_no_internet_4_rounded),
+              );
+            },
+          ),
         ),
         Positioned(
           bottom: 10,

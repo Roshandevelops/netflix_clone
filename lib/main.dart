@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/download_provider.dart';
+import 'package:netflix_project/controller/home_provider.dart';
 import 'package:netflix_project/controller/new_and_hot_provider.dart';
 import 'package:netflix_project/controller/search_provider.dart';
 import 'package:netflix_project/view/all_screens/all_screens.dart';
@@ -31,6 +32,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) {
             return NewAndHotProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return HomeProvider();
           },
         ),
       ],

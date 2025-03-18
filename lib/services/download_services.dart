@@ -40,7 +40,7 @@ class DownloadServices {
         return [];
       }
     } catch (e) {
-      return [];
+      return Future.error(e);
     }
   }
 }

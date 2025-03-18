@@ -39,7 +39,7 @@ class SearchServices {
         return [];
       }
     } catch (e) {
-      return [];
+      return Future.error(e);
     }
   }
 }
