@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/home_provider.dart';
-import 'package:netflix_project/models/new_hot_model.dart';
+import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:netflix_project/widgets/main_card_widget.dart';
 import 'package:netflix_project/widgets/title_widget.dart';
@@ -16,7 +16,8 @@ class TitleImageWidget extends StatelessWidget {
 
   final String title;
   final List<String> posterList;
-  final NewAndHotModel? newAndHotModel;
+  // final NewAndHotModel? newAndHotModel;
+  final MovieModel? newAndHotModel;
 
   @override
   Widget build(BuildContext context) {

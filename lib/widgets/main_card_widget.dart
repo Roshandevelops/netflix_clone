@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/models/movie_model.dart';
-import 'package:netflix_project/models/new_hot_model.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
 class MainCardWidget extends StatelessWidget {
@@ -16,7 +15,9 @@ class MainCardWidget extends StatelessWidget {
   final double? width;
   final double? height;
   final MovieModel? searchModel;
-  final NewAndHotModel? newAndHotModel;
+  final MovieModel? newAndHotModel;
+
+  // final NewAndHotModel? newAndHotModel;
 
   final String? imageUrl;
 

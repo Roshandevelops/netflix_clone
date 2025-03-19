@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:netflix_project/core/api_end_points.dart';
-import 'package:netflix_project/models/new_hot_model.dart';
+import 'package:netflix_project/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
 class NewAndHotServices {
@@ -12,7 +12,7 @@ class NewAndHotServices {
     return NewAndHotServices.instance;
   }
 
-  Future<List<NewAndHotModel>> fetchNewAndHotMovie() async {
+  Future<List<MovieModel>> fetchNewAndHotMovie() async {
     try {
       final response = await http.get(
         Uri.parse(
@@ -28,13 +28,9 @@ class NewAndHotServices {
         final json = jsonDecode(response.body) as Map;
         final result = (json["results"] as List).map(
           (e) {
-            // log(e.toString());
-            // log(e["poster_path"].toString());
-            return NewAndHotModel.fromJson(e);
+            return MovieModel.fromJson(e);
           },
         ).toList();
-
-        // log(result.toString());
         return result;
       } else {
         return [];
@@ -44,7 +40,7 @@ class NewAndHotServices {
     }
   }
 
-  Future<List<NewAndHotModel>> fetchNewAndHotTv() async {
+  Future<List<MovieModel>> fetchNewAndHotTv() async {
     try {
       final response = await http.get(
         Uri.parse(
@@ -61,7 +57,7 @@ class NewAndHotServices {
         final result = (json["results"] as List).map(
           (e) {
             log(e["name"].toString());
-            return NewAndHotModel.fromJson(e);
+            return MovieModel.fromJson(e);
           },
         ).toList();
         log(result.toString());
