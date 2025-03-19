@@ -55,74 +55,79 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Stack(
               children: [
-                Consumer<HomeProvider>(builder: (context, homeProvider, child) {
-                  if (homeProvider.pastYearList.isEmpty) {
-                    return Center(
-                      child: Text('Empty List'),
-                    );
-                  } else if (homeProvider.isLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  final releasedPastYear = homeProvider.pastYearList.map(
-                    (e) {
-                      return "$imageAppendUrl${e.posterPath}";
-                    },
-                  ).toList();
+                Consumer<HomeProvider>(
+                  builder: (context, homeProvider, child) {
+                    if (homeProvider.isLoading) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (homeProvider.pastYearList.isEmpty) {
+                      return Center(
+                        child: Text('Empty List'),
+                      );
+                    } else {
+                      final releasedPastYear = homeProvider.pastYearList.map(
+                        (e) {
+                          return "$imageAppendUrl${e.posterPath}";
+                        },
+                      ).toList();
 
-                  final trendingNow = homeProvider.trendingList.map(
-                    (e) {
-                      return "$imageAppendUrl${e.posterPath}";
-                    },
-                  ).toList();
-                  final tenseDramas = homeProvider.tenseDramasList.map(
-                    (e) {
-                      return "$imageAppendUrl${e.posterPath}";
-                    },
-                  ).toList();
-                  final southIndian = homeProvider.southIndianList.map(
-                    (e) {
-                      return "$imageAppendUrl${e.posterPath}";
-                    },
-                  ).toList();
-                  final TopTen = homeProvider.topTenList.map(
-                    (e) {
-                      return "$imageAppendUrl${e.posterPath}";
-                    },
-                  ).toList();
+                      final trendingNow = homeProvider.trendingList.map(
+                        (e) {
+                          return "$imageAppendUrl${e.posterPath}";
+                        },
+                      ).toList();
+                      final tenseDramas = homeProvider.tenseDramasList.map(
+                        (e) {
+                          return "$imageAppendUrl${e.posterPath}";
+                        },
+                      ).toList();
+                      final southIndian = homeProvider.southIndianList.map(
+                        (e) {
+                          return "$imageAppendUrl${e.posterPath}";
+                        },
+                      ).toList();
+                      final TopTen = homeProvider.topTenList.map(
+                        (e) {
+                          return "$imageAppendUrl${e.posterPath}";
+                        },
+                      ).toList();
 
-                  return ListView(
-                    children: [
-                      BackgroundCardWidget(),
-                      kHeight20,
-                      TitleImageWidget(
-                        title: "Released in the Past Year",
-                        posterList: releasedPastYear.sublist(0, 10),
-                      ),
-                      kHeight,
-                      TitleImageWidget(
-                        title: "Trending Now",
-                        posterList: trendingNow.sublist(0, 10),
-                      ),
-                      kHeight,
-                      TopTenWidgetTile(
-                        numberUrl: TopTen.sublist(0, 10),
-                      ),
-                      kHeight,
-                      TitleImageWidget(
-                        title: "Tense Dramas",
-                        posterList: tenseDramas.sublist(0, 10),
-                      ),
-                      kHeight,
-                      TitleImageWidget(
-                        title: "South Indian Cinema",
-                        posterList: southIndian.sublist(0, 10),
-                      ),
-                      kHeight,
-                    ],
-                  );
-                }),
+                      return ListView(
+                        children: [
+                          BackgroundCardWidget(),
+                          kHeight20,
+                          TitleImageWidget(
+                            title: "Released in the Past Year",
+                            posterList: releasedPastYear,
+                          ),
+                          kHeight,
+                          TitleImageWidget(
+                            title: "Trending Now",
+                            posterList: trendingNow,
+                          ),
+                          kHeight,
+                          TopTenWidgetTile(
+                            numberUrl: TopTen.length > 10
+                                ? TopTen.sublist(0, 10)
+                                : TopTen,
+                          ),
+                          kHeight,
+                          TitleImageWidget(
+                            title: "Tense Dramas",
+                            posterList: tenseDramas,
+                          ),
+                          kHeight,
+                          TitleImageWidget(
+                            title: "South Indian Cinema",
+                            posterList: southIndian,
+                          ),
+                          kHeight,
+                        ],
+                      );
+                    }
+                  },
+                ),
                 scrollNotifier.value == true
                     ? AnimatedContainer(
                         duration: const Duration(milliseconds: 1000),

@@ -54,7 +54,12 @@ class HomeProvider extends ChangeNotifier {
     tenseDramasList = await NewAndHotServices.instance.fetchNewAndHotMovie();
     isLoading = false;
     notifyListeners();
+
+    isLoading = true;
+    notifyListeners();
     southIndianList = await NewAndHotServices.instance.fetchNewAndHotMovie();
+    isLoading = false;
+    notifyListeners();
 
     isLoading = true;
     notifyListeners();

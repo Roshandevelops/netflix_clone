@@ -17,13 +17,13 @@ class BuildComingSoon extends StatelessWidget {
       },
       child:
           Consumer<NewAndHotProvider>(builder: (context, movieProvider, child) {
-        if (movieProvider.comingSoonList.isEmpty) {
-          return const Center(
-            child: Text("Empty List"),
-          );
-        } else if (movieProvider.isLoading) {
+        if (movieProvider.isLoading) {
           return const Center(
             child: CircularProgressIndicator(),
+          );
+        } else if (movieProvider.comingSoonList.isEmpty) {
+          return const Center(
+            child: Text("Empty List"),
           );
         } else {
           return ListView.builder(

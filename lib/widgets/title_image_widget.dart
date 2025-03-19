@@ -28,7 +28,6 @@ class TitleImageWidget extends StatelessWidget {
                 return Row(
                   children: [
                     MainCardWidget(
-                      imageUrl: posterList[index],
                       width: 120,
                       height: 200,
                       searchModel: null,
