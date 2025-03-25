@@ -33,7 +33,7 @@ class DownloadServices {
           },
         ).toList();
 
-        log(result.toString());
+        // log(result.toString());
 
         return result;
       } else {

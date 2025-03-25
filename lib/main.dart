@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/download_provider.dart';
+import 'package:netflix_project/controller/fast_laugh_provider.dart';
 import 'package:netflix_project/controller/home_provider.dart';
 import 'package:netflix_project/controller/new_and_hot_provider.dart';
 import 'package:netflix_project/controller/search_provider.dart';
@@ -37,6 +38,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) {
             return HomeProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return FastLaughProvider();
           },
         ),
       ],

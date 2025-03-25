@@ -1,9 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/view/fast_laughs/widgets/video_action_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final MovieModel movieModel;
+
+  const VideoListItemInheritedWidget({
+    Key? key,
+
+    // super.key,
+    required this.widget,
+    required this.movieModel,
+  }) : super(
+          key: key,
+          child: widget,
+        );
+
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.movieModel != movieModel;
+  }
+
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
+}
+
 class VideoListItem extends StatelessWidget {
-  const VideoListItem({super.key, required this.index});
+  const VideoListItem({
+    super.key,
+    required this.index,
+  });
 
   final int index;
 
