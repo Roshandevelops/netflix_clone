@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/view/fast_laughs/widgets/video_action_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
@@ -39,6 +40,9 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        VideoListItemInheritedWidget.of(context)?.movieModel.posterPath;
+
     return Stack(
       children: [
         Container(
@@ -66,16 +70,16 @@ class VideoListItem extends StatelessWidget {
                   ),
                 ),
                 //right side
-                const Column(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
-                        radius: 35,
-                        backgroundImage: NetworkImage(
-                            "https://media.themoviedb.org/t/p/w500_and_h282_face/kYgQzzjNis5jJalYtIHgrom0gOx.jpg"),
-                      ),
+                          radius: 35,
+                          backgroundImage: posterPath == null
+                              ? null
+                              : NetworkImage("$imageAppendUrl$posterPath")),
                     ),
                     VideoActionWidget(
                         iconData: Icons.emoji_emotions, title: "LOL"),

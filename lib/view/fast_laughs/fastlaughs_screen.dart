@@ -38,11 +38,18 @@ class _FastLaughScreenState extends State<FastLaughScreen> {
             return PageView(
               scrollDirection: Axis.vertical,
               children: List.generate(
-                10,
-                (value) {
-                  return VideoListItem(
-                    index: value,
+                fastLaughProvider.videoLists.length,
+                (index) {
+                  return VideoListItemInheritedWidget(
+                    widget: VideoListItem(
+                      index: index,
+                      key: Key(index.toString()),
+                    ),
+                    movieModel: fastLaughProvider.videoLists[index],
                   );
+                  // VideoListItem(
+                  //   index: value,
+                  // );
                 },
               ),
             );
