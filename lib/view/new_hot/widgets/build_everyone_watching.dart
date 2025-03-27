@@ -23,7 +23,7 @@ class BuildEveryOneWatching extends StatelessWidget {
           );
         } else {
           return ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             itemBuilder: (ctx, index) {
               final tv = tvProvider.everyOneIsWatchingList[index];
 

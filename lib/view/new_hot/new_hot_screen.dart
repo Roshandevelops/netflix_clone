@@ -1,13 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:netflix_project/controller/new_and_hot_provider.dart';
-import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/view/new_hot/widgets/build_coming_soon.dart';
 import 'package:netflix_project/view/new_hot/widgets/build_everyone_watching.dart';
-import 'package:netflix_project/view/new_hot/widgets/coming_soon_widget.dart';
-import 'package:netflix_project/view/new_hot/widgets/everyone_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:provider/provider.dart';
 

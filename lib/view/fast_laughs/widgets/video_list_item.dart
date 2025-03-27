@@ -87,9 +87,10 @@ class VideoListItem extends StatelessWidget {
                               ? null
                               : NetworkImage("$imageAppendUrl$posterPath")),
                     ),
-                    VideoActionWidget(
+                    const VideoActionWidget(
                         iconData: Icons.emoji_emotions, title: "LOL"),
-                    VideoActionWidget(iconData: Icons.add, title: "My List"),
+                    const VideoActionWidget(
+                        iconData: Icons.add, title: "My List"),
                     GestureDetector(
                         onTap: () {
                           final movieName =
@@ -100,9 +101,10 @@ class VideoListItem extends StatelessWidget {
                             Share.share(movieName);
                           }
                         },
-                        child: VideoActionWidget(
+                        child: const VideoActionWidget(
                             iconData: Icons.share, title: "Share")),
-                    VideoActionWidget(iconData: Icons.play_arrow, title: "LOL"),
+                    const VideoActionWidget(
+                        iconData: Icons.play_arrow, title: "LOL"),
                   ],
                 )
               ],
@@ -154,7 +156,7 @@ class _FastLaughVideoPlayerWidgetState
             )
 
           //  VideoPlayer(videoPlayerController)
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(),
             ),
     );

@@ -27,11 +27,11 @@ class _FastLaughScreenState extends State<FastLaughScreen> {
         child: Consumer<FastLaughProvider>(
             builder: (context, fastLaughProvider, child) {
           if (fastLaughProvider.isLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (fastLaughProvider.videoLists.isEmpty) {
-            return Center(
+            return const Center(
               child: Text("Empty List"),
             );
           } else {

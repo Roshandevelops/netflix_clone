@@ -58,11 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Consumer<HomeProvider>(
                   builder: (context, homeProvider, child) {
                     if (homeProvider.isLoading) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     } else if (homeProvider.pastYearList.isEmpty) {
-                      return Center(
+                      return const Center(
                         child: Text('Empty List'),
                       );
                     } else {
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           return "$imageAppendUrl${e.posterPath}";
                         },
                       ).toList();
-                      final TopTen = homeProvider.topTenList.map(
+                      final topTen = homeProvider.topTenList.map(
                         (e) {
                           return "$imageAppendUrl${e.posterPath}";
                         },
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       return ListView(
                         children: [
-                          BackgroundCardWidget(),
+                          const BackgroundCardWidget(),
                           kHeight20,
                           TitleImageWidget(
                             title: "Released in the Past Year",
@@ -108,9 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           kHeight,
                           TopTenWidgetTile(
-                            numberUrl: TopTen.length > 10
-                                ? TopTen.sublist(0, 10)
-                                : TopTen,
+                            numberUrl: topTen.length > 10
+                                ? topTen.sublist(0, 10)
+                                : topTen,
                           ),
                           kHeight,
                           TitleImageWidget(

@@ -23,13 +23,13 @@ class StackImageIconWidget extends StatelessWidget {
               if (loadingProgress == null) {
                 return child;
               } else {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
             },
             errorBuilder: (context, error, stackTrace) {
-              return Center(
+              return const Center(
                 child: Icon(Icons.signal_wifi_connected_no_internet_4_rounded),
               );
             },
