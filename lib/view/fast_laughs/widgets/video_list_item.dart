@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_project/controller/fast_laugh_provider.dart';
 import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/view/fast_laughs/widgets/video_action_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoListItemInheritedWidget extends InheritedWidget {
   final Widget widget;
@@ -43,10 +46,13 @@ class VideoListItem extends StatelessWidget {
     final posterPath =
         VideoListItemInheritedWidget.of(context)?.movieModel.posterPath;
 
+    final videourl = dummyVideoUrls[index % dummyVideoUrls.length];
+
     return Stack(
       children: [
-        Container(
-          color: Colors.accents[index % Colors.accents.length],
+        FastLaughVideoPlayerWidget(
+          videoUrl: videourl,
+          onStateChanged: (bool) {},
         ),
         Align(
           alignment: Alignment.bottomLeft,
@@ -74,7 +80,7 @@ class VideoListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                           radius: 35,
                           backgroundImage: posterPath == null
@@ -84,7 +90,18 @@ class VideoListItem extends StatelessWidget {
                     VideoActionWidget(
                         iconData: Icons.emoji_emotions, title: "LOL"),
                     VideoActionWidget(iconData: Icons.add, title: "My List"),
-                    VideoActionWidget(iconData: Icons.share, title: "Share"),
+                    GestureDetector(
+                        onTap: () {
+                          final movieName =
+                              VideoListItemInheritedWidget.of(context)
+                                  ?.movieModel
+                                  .title;
+                          if (movieName != null) {
+                            Share.share(movieName);
+                          }
+                        },
+                        child: VideoActionWidget(
+                            iconData: Icons.share, title: "Share")),
                     VideoActionWidget(iconData: Icons.play_arrow, title: "LOL"),
                   ],
                 )
@@ -94,5 +111,58 @@ class VideoListItem extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+class FastLaughVideoPlayerWidget extends StatefulWidget {
+  final String videoUrl;
+  final void Function(bool isPlaying) onStateChanged;
+  const FastLaughVideoPlayerWidget({
+    super.key,
+    required this.videoUrl,
+    required this.onStateChanged,
+  });
+
+  @override
+  State<FastLaughVideoPlayerWidget> createState() =>
+      _FastLaughVideoPlayerWidgetState();
+}
+
+class _FastLaughVideoPlayerWidgetState
+    extends State<FastLaughVideoPlayerWidget> {
+  late VideoPlayerController videoPlayerController;
+
+  @override
+  void initState() {
+    videoPlayerController = VideoPlayerController.networkUrl(
+      Uri.parse(widget.videoUrl),
+    );
+    setState(() {});
+    videoPlayerController.play();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: videoPlayerController.value.isInitialized
+          ? AspectRatio(
+              aspectRatio: videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(videoPlayerController),
+            )
+
+          //  VideoPlayer(videoPlayerController)
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
+    );
+  }
+
+  @override
+  void dispose() {
+    videoPlayerController.dispose();
+    super.dispose();
   }
 }
