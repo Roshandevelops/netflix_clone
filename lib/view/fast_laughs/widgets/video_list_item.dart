@@ -49,6 +49,7 @@ class VideoListItem extends StatefulWidget {
 
 class _VideoListItemState extends State<VideoListItem> {
   static Map<int, bool> isLolMap = {};
+  static Map<int, bool> isMutedMap = {};
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +58,14 @@ class _VideoListItemState extends State<VideoListItem> {
 
     final videourl = dummyVideoUrls[widget.index % dummyVideoUrls.length];
     bool isLol = isLolMap[widget.index] ?? true;
+    bool isMuted = isMutedMap[widget.index] ?? false;
 
     return Stack(
       children: [
         FastLaughVideoPlayerWidget(
           videoUrl: videourl,
           onStateChanged: (bool) {},
+          isMuted: isMuted,
         ),
         Align(
           alignment: Alignment.bottomLeft,
@@ -77,9 +80,14 @@ class _VideoListItemState extends State<VideoListItem> {
                   backgroundColor: Colors.black.withOpacity(0.5),
                   radius: 30,
                   child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.volume_off,
+                    onPressed: () {
+                      setState(() {
+                        isMuted = !isMuted;
+                        isMutedMap[widget.index] = isMuted;
+                      });
+                    },
+                    icon: Icon(
+                      isMuted ? Icons.volume_off : Icons.volume_up_outlined,
                       size: 30,
                       color: kWhiteColor,
                     ),
@@ -111,18 +119,19 @@ class _VideoListItemState extends State<VideoListItem> {
                     const VideoActionWidget(
                         iconData: Icons.add, title: "My List"),
                     GestureDetector(
-                        onTap: () {
-                          final _posterPath =
-                              VideoListItemInheritedWidget.of(context)
-                                  ?.movieModel
-                                  .posterPath;
-                          log(_posterPath.toString());
-                          if (_posterPath != null) {
-                            Share.share(_posterPath);
-                          }
-                        },
-                        child: const VideoActionWidget(
-                            iconData: Icons.share, title: "Share")),
+                      onTap: () {
+                        final _posterPath =
+                            VideoListItemInheritedWidget.of(context)
+                                ?.movieModel
+                                .posterPath;
+                        log(_posterPath.toString());
+                        if (_posterPath != null) {
+                          Share.share(_posterPath);
+                        }
+                      },
+                      child: const VideoActionWidget(
+                          iconData: Icons.share, title: "Share"),
+                    ),
                     const VideoActionWidget(
                         iconData: Icons.play_arrow, title: "Play"),
                   ],
@@ -139,10 +148,12 @@ class _VideoListItemState extends State<VideoListItem> {
 class FastLaughVideoPlayerWidget extends StatefulWidget {
   final String videoUrl;
   final void Function(bool isPlaying) onStateChanged;
+  final bool isMuted;
   const FastLaughVideoPlayerWidget({
     super.key,
     required this.videoUrl,
     required this.onStateChanged,
+    this.isMuted = false,
   });
 
   @override
@@ -163,10 +174,21 @@ class _FastLaughVideoPlayerWidgetState
       (value) {
         setState(() {});
         videoPlayerController.play();
+        if (widget.isMuted) {
+          videoPlayerController.setVolume(0);
+        }
       },
     );
 
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant FastLaughVideoPlayerWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isMuted != widget.isMuted) {
+      videoPlayerController.setVolume(widget.isMuted ? 0 : 1);
+    }
   }
 
   @override
