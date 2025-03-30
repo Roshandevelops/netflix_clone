@@ -48,13 +48,15 @@ class VideoListItem extends StatefulWidget {
 }
 
 class _VideoListItemState extends State<VideoListItem> {
-  bool isLol = true;
+  static Map<int, bool> isLolMap = {};
+
   @override
   Widget build(BuildContext context) {
     final posterPath =
         VideoListItemInheritedWidget.of(context)?.movieModel.posterPath;
 
     final videourl = dummyVideoUrls[widget.index % dummyVideoUrls.length];
+    bool isLol = isLolMap[widget.index] ?? true;
 
     return Stack(
       children: [
@@ -101,6 +103,7 @@ class _VideoListItemState extends State<VideoListItem> {
                       onPressed: () {
                         setState(() {
                           isLol = !isLol;
+                          isLolMap[widget.index] = isLol;
                         });
                       },
                     ),
