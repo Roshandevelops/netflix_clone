@@ -35,7 +35,7 @@ class VideoListItemInheritedWidget extends InheritedWidget {
   }
 }
 
-class VideoListItem extends StatelessWidget {
+class VideoListItem extends StatefulWidget {
   const VideoListItem({
     super.key,
     required this.index,
@@ -44,11 +44,17 @@ class VideoListItem extends StatelessWidget {
   final int index;
 
   @override
+  State<VideoListItem> createState() => _VideoListItemState();
+}
+
+class _VideoListItemState extends State<VideoListItem> {
+  bool isLol = true;
+  @override
   Widget build(BuildContext context) {
     final posterPath =
         VideoListItemInheritedWidget.of(context)?.movieModel.posterPath;
 
-    final videourl = dummyVideoUrls[index % dummyVideoUrls.length];
+    final videourl = dummyVideoUrls[widget.index % dummyVideoUrls.length];
 
     return Stack(
       children: [
@@ -89,25 +95,30 @@ class VideoListItem extends StatelessWidget {
                               ? null
                               : NetworkImage("$imageAppendUrl$posterPath")),
                     ),
-                    const VideoActionWidget(
-                        iconData: Icons.emoji_emotions, title: "LOL"),
+                    VideoActionWidget(
+                      iconData: isLol ? Icons.emoji_emotions : Icons.favorite,
+                      title: isLol ? "Lol" : "Liked",
+                      onPressed: () {
+                        setState(() {
+                          isLol = !isLol;
+                        });
+                      },
+                    ),
                     const VideoActionWidget(
                         iconData: Icons.add, title: "My List"),
                     GestureDetector(
-                      onTap: () {
-                        final newPosterPath =
-                            VideoListItemInheritedWidget.of(context)
-                                ?.movieModel
-                                .posterPath;
-
-                        log(newPosterPath.toString());
-                        if (newPosterPath != null) {
-                          Share.share(newPosterPath);
-                        }
-                      },
-                      child: const VideoActionWidget(
-                          iconData: Icons.share, title: "Share"),
-                    ),
+                        onTap: () {
+                          final _posterPath =
+                              VideoListItemInheritedWidget.of(context)
+                                  ?.movieModel
+                                  .posterPath;
+                          log(_posterPath.toString());
+                          if (_posterPath != null) {
+                            Share.share(_posterPath);
+                          }
+                        },
+                        child: const VideoActionWidget(
+                            iconData: Icons.share, title: "Share")),
                     const VideoActionWidget(
                         iconData: Icons.play_arrow, title: "Play"),
                   ],
