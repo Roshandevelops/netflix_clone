@@ -139,8 +139,13 @@ class _FastLaughVideoPlayerWidgetState
     videoPlayerController = VideoPlayerController.networkUrl(
       Uri.parse(widget.videoUrl),
     );
-    setState(() {});
-    videoPlayerController.play();
+    videoPlayerController.initialize().then(
+      (value) {
+        setState(() {});
+        videoPlayerController.play();
+      },
+    );
+
     super.initState();
   }
 
