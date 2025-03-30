@@ -52,6 +52,7 @@ class _VideoListItemState extends State<VideoListItem> {
   static Map<int, bool> isLolMap = {};
   static Map<int, bool> isMutedMap = {};
   static Map<int, bool> isPlayingMap = {};
+  static Map<int, bool> isMyListMap = {};
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,7 @@ class _VideoListItemState extends State<VideoListItem> {
     bool isLol = isLolMap[widget.index] ?? true;
     bool isMuted = isMutedMap[widget.index] ?? false;
     bool isPlaying = isPlayingMap[widget.index] ?? true;
+    bool isInMyList = isMyListMap[widget.index] ?? false;
 
     return Stack(
       children: [
@@ -123,8 +125,16 @@ class _VideoListItemState extends State<VideoListItem> {
                         });
                       },
                     ),
-                    const VideoActionWidget(
-                        iconData: Icons.add, title: "My List"),
+                    VideoActionWidget(
+                      iconData: isInMyList ? Icons.check : Icons.add,
+                      title: isInMyList ? "My List" : "Add",
+                      onPressed: () {
+                        setState(() {
+                          isInMyList = !isInMyList;
+                          isMyListMap[widget.index] = isInMyList;
+                        });
+                      },
+                    ),
                     GestureDetector(
                       onTap: () {
                         final _posterPath =
