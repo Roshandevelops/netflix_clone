@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:netflix_project/controller/fast_laugh_provider.dart';
 import 'package:netflix_project/core/strings.dart';
@@ -92,19 +94,22 @@ class VideoListItem extends StatelessWidget {
                     const VideoActionWidget(
                         iconData: Icons.add, title: "My List"),
                     GestureDetector(
-                        onTap: () {
-                          final movieName =
-                              VideoListItemInheritedWidget.of(context)
-                                  ?.movieModel
-                                  .title;
-                          if (movieName != null) {
-                            Share.share(movieName);
-                          }
-                        },
-                        child: const VideoActionWidget(
-                            iconData: Icons.share, title: "Share")),
+                      onTap: () {
+                        final newPosterPath =
+                            VideoListItemInheritedWidget.of(context)
+                                ?.movieModel
+                                .posterPath;
+
+                        log(newPosterPath.toString());
+                        if (newPosterPath != null) {
+                          Share.share(newPosterPath);
+                        }
+                      },
+                      child: const VideoActionWidget(
+                          iconData: Icons.share, title: "Share"),
+                    ),
                     const VideoActionWidget(
-                        iconData: Icons.play_arrow, title: "LOL"),
+                        iconData: Icons.play_arrow, title: "Play"),
                   ],
                 )
               ],
