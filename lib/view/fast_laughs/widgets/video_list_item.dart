@@ -5,6 +5,7 @@ import 'package:netflix_project/controller/fast_laugh_provider.dart';
 import 'package:netflix_project/core/strings.dart';
 import 'package:netflix_project/models/movie_model.dart';
 import 'package:netflix_project/view/fast_laughs/widgets/video_action_widget.dart';
+import 'package:netflix_project/view/fast_laughs/widgets/video_player_widget.dart';
 import 'package:netflix_project/widgets/constants.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
@@ -50,6 +51,7 @@ class VideoListItem extends StatefulWidget {
 class _VideoListItemState extends State<VideoListItem> {
   static Map<int, bool> isLolMap = {};
   static Map<int, bool> isMutedMap = {};
+  static Map<int, bool> isPlayingMap = {};
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +61,17 @@ class _VideoListItemState extends State<VideoListItem> {
     final videourl = dummyVideoUrls[widget.index % dummyVideoUrls.length];
     bool isLol = isLolMap[widget.index] ?? true;
     bool isMuted = isMutedMap[widget.index] ?? false;
+    bool isPlaying = isPlayingMap[widget.index] ?? true;
 
     return Stack(
       children: [
         FastLaughVideoPlayerWidget(
           videoUrl: videourl,
-          onStateChanged: (bool) {},
+          onStateChanged: (bool isPlaying) {
+            setState(() {
+              isPlayingMap[widget.index] = isPlaying;
+            });
+          },
           isMuted: isMuted,
         ),
         Align(
@@ -132,8 +139,16 @@ class _VideoListItemState extends State<VideoListItem> {
                       child: const VideoActionWidget(
                           iconData: Icons.share, title: "Share"),
                     ),
-                    const VideoActionWidget(
-                        iconData: Icons.play_arrow, title: "Play"),
+                    VideoActionWidget(
+                      iconData: isPlaying ? Icons.play_arrow : Icons.pause,
+                      title: isPlaying ? "Pause" : "Play",
+                      onPressed: () {
+                        setState(() {
+                          isPlaying = !isPlaying;
+                          isPlayingMap[widget.index] = isPlaying;
+                        });
+                      },
+                    ),
                   ],
                 )
               ],
@@ -142,76 +157,5 @@ class _VideoListItemState extends State<VideoListItem> {
         )
       ],
     );
-  }
-}
-
-class FastLaughVideoPlayerWidget extends StatefulWidget {
-  final String videoUrl;
-  final void Function(bool isPlaying) onStateChanged;
-  final bool isMuted;
-  const FastLaughVideoPlayerWidget({
-    super.key,
-    required this.videoUrl,
-    required this.onStateChanged,
-    this.isMuted = false,
-  });
-
-  @override
-  State<FastLaughVideoPlayerWidget> createState() =>
-      _FastLaughVideoPlayerWidgetState();
-}
-
-class _FastLaughVideoPlayerWidgetState
-    extends State<FastLaughVideoPlayerWidget> {
-  late VideoPlayerController videoPlayerController;
-
-  @override
-  void initState() {
-    videoPlayerController = VideoPlayerController.networkUrl(
-      Uri.parse(widget.videoUrl),
-    );
-    videoPlayerController.initialize().then(
-      (value) {
-        setState(() {});
-        videoPlayerController.play();
-        if (widget.isMuted) {
-          videoPlayerController.setVolume(0);
-        }
-      },
-    );
-
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant FastLaughVideoPlayerWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isMuted != widget.isMuted) {
-      videoPlayerController.setVolume(widget.isMuted ? 0 : 1);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: videoPlayerController.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: videoPlayerController.value.aspectRatio,
-              child: VideoPlayer(videoPlayerController),
-            )
-
-          //  VideoPlayer(videoPlayerController)
-          : const Center(
-              child: CircularProgressIndicator(),
-            ),
-    );
-  }
-
-  @override
-  void dispose() {
-    videoPlayerController.dispose();
-    super.dispose();
   }
 }
