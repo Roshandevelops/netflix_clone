@@ -92,10 +92,11 @@ class _VideoListItemState extends State<VideoListItem> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
-                          radius: 35,
-                          backgroundImage: posterPath == null
-                              ? null
-                              : NetworkImage("$imageAppendUrl$posterPath")),
+                        radius: 35,
+                        backgroundImage: posterPath == null
+                            ? null
+                            : NetworkImage("$imageAppendUrl$posterPath"),
+                      ),
                     ),
                     VideoActionWidget(
                       iconData: isLol ? Icons.emoji_emotions : Icons.favorite,
